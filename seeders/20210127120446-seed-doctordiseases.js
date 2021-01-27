@@ -2,7 +2,7 @@
 let data = require("../data/doctordiseases.json")
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: (queryInterface, Sequelize) => {
     /**
      * Add seed commands here.
      *
