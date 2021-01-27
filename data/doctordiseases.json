@@ -1,0 +1,34 @@
+[
+  {
+    "DoctorId":"1",
+    "DiseaseId":"1"
+  },
+  {
+    "DoctorId":"1",
+    "DiseaseId":"2"
+  },
+  {
+    "DoctorId":"2",
+    "DiseaseId":"3"
+  },
+  {
+    "DoctorId":"2",
+    "DiseaseId":"4"
+  },
+  {
+    "DoctorId":"3",
+    "DiseaseId":"5"
+  },
+  {
+    "DoctorId":"4",
+    "DiseaseId":"2"
+  },
+  {
+    "DoctorId":"4",
+    "DiseaseId":"6"
+  },
+  {
+    "DoctorId":"4",
+    "DiseaseId":"7"
+  }  
+]
