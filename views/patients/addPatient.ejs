@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../partials/head", { title: "Add Patient" }) %>
+</head>
+
+<body>
+  <div class="container">
+    <%- include("../partials/navbar", { page: "patients" }) %>
+
+    <div class="container-fluid" style="margin-top: 15pt;">
+      <div class="container-fluid">
+        <p class="h2">Add Patient</p>
+      </div>
+      <div class="container-fluid">
+        <form action="" method="POST">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Insert First Name" >
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Insert Last Name" >
+          </div>
+          <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" class="form-control" id="age" name="age" placeholder="Insert Age" >
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="Insert Address" >
+          </div>
+          <div class="mb-3">
+            <label for="DiseaseId">Disease</label>
+            <select id="DiseaseId" class="form-control" name="DiseaseId" >
+              <option selected disabled>Select Disease</option>
+              <% options.forEach(op => { %>
+                <option value="<%= op.id %>"><%= op.name %></option>
+              <% }) %>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <a class="btn btn-danger" href="/patients/">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<%- include("../partials/errorAlert", { errors: errors }) %>
+</html>

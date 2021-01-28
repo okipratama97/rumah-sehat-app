@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../partials/head", { title: "Disease List" }) %>
+</head>
+
+<body>
+  <div class="container">
+    <%- include("../partials/navbar", { page: "diseases" }) %>
+
+    <div class="container-fluid" style="margin-top: 15pt;">
+      <div class="container-fluid">
+        <p class="h2">Disease List</p>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(el => { %>
+           <tr>
+             <th scope="row"><%= el.id %></td>
+             <td><%= el.name %></td>
+           </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

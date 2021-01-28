@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../partials/head", { title: "Doctor List" }) %>
+</head>
+
+<body>
+  <div class="container">
+    <%- include("../partials/navbar", { page: "doctors" }) %>
+
+    <div class="container-fluid" style="margin-top: 15pt;">
+      <div class="container-fluid">
+        <p class="h2">Doctor List</p>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Patients</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(el => { %>
+           <tr>
+             <th scope="row"><%= el.id %></td>
+             <td><%= el.showFullName() %></td>
+             <td><%= el.email %></td>
+             <td>
+              <a class="btn btn-secondary" href="/doctors/<%= el.id %>/seepatients">See</a>
+             </td>
+           </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

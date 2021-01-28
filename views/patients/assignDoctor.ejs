@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../partials/head", { title: "Assign Doctor" }) %>
+</head>
+
+<body>
+  <div class="container">
+    <%- include("../partials/navbar", { page: "patients" }) %>
+
+    <div class="container-fluid" style="margin-top: 15pt;">
+      <div class="container-fluid">
+        <p class="h2">Assign a Doctor</p>
+      </div>
+      <div class="container-fluid">
+        <form action="" method="POST">
+          <div class="mb-3">
+            <label for="DoctorId">Doctor</label>
+            <select id="DoctorId" class="form-control" name="DoctorId">
+              <option selected disabled >Select Doctor</option>
+              <% options.forEach(op => { %>
+                <option value="<%= op.id %>" <%= (op.id === data.DoctorId) && "selected" %> ><%= op.showFullName() %></option>
+              <% }) %>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <a class="btn btn-danger" href="/patients/">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<%- include("../partials/errorAlert", { errors: errors }) %>
+</html>

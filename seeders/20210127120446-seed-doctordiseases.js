@@ -12,8 +12,12 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-
-  return queryInterface.bulkInsert('DoctorDiseases', data)
+   let doctordiseases = data.map((el) => {
+    el.createdAt = new Date()
+    el.updatedAt = new Date()
+    return el
+  })
+  return queryInterface.bulkInsert('DoctorDiseases', doctordiseases)
  },
 
  down: (queryInterface, Sequelize) => {
