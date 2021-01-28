@@ -21,7 +21,8 @@ class PatientController {
     Disease
       .findAll()
       .then(options => {
-        let errors = req.app.locals.errs || null
+        let errors = req.session.errors || null
+        req.session.errors = null
         res.render("patients/addPatient", { options: options, errors: errors })
       })
       .catch(err => {
@@ -41,7 +42,12 @@ class PatientController {
       })
       .catch(err => {
         console.log(err);
-        res.send(err)
+        let errors = []
+        err.errors.forEach(er => {
+          errors.push(er.message)
+        });
+        req.session.errors = errors.join("\n")
+        res.redirect(`/patients/add`)
       })
   }
 
@@ -56,7 +62,8 @@ class PatientController {
         return Disease.findAll()
       })
       .then(options => {
-        let errors = req.app.locals.errs || null
+        let errors = req.session.errors || null
+        req.session.errors = null
         res.render("patients/editPatient", { data: patientData, options: options, errors: errors })
       })
       .catch(err => {
@@ -80,7 +87,12 @@ class PatientController {
       })
       .catch(err => {
         console.log(err);
-        res.send(err)
+        let errors = []
+        err.errors.forEach(er => {
+          errors.push(er.message)
+        });
+        req.session.errors = errors.join("\n")
+        res.redirect(`/patients/${id}/edit`)
       })
   }
 
@@ -100,7 +112,8 @@ class PatientController {
         })
       })
       .then(options => {
-        let errors = req.app.locals.errs || null
+        let errors = req.session.errors || null
+        req.session.errors = null
         res.render("patients/assignDoctor", { data: patientData, options: options, errors: errors })
       })
       .catch(err => {
@@ -124,7 +137,12 @@ class PatientController {
       })
       .catch(err => {
         console.log(err);
-        res.send(err)
+        let errors = []
+        err.errors.forEach(er => {
+          errors.push(er.message)
+        });
+        req.session.errors = errors.join("\n")
+        res.redirect(`/patients/${id}/assigndoctor`)
       })
   }
 
