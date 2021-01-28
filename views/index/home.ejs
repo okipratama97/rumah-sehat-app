@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../partials/head", { title: "Rumah Sehat" }) %>
+</head>
+
+<body>
+  <div class="container">
+    <%- include("../partials/navbar", { page: "home" }) %>
+
+    <div class="container-fluid" style="margin-top: 15pt;">
+      <div class="container-fluid">
+        <p class="h2">Rumah Sehat</p>
+      </div>
+
+      <div class="container">
+        <div class="list-group">
+          <a href="/diseases" class="list-group-item list-group-item-action">Diseases</a>
+          <a href="/doctors" class="list-group-item list-group-item-action">Doctors</a>
+          <a href="/patients" class="list-group-item list-group-item-action">Patients</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

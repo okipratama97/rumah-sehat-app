@@ -12,9 +12,16 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.hasMany(models.Patient)
-      this.belongsToMany(models.Disease, {
-        through:"DoctorDiseases"
-      })
+      this.belongsToMany(
+        models.Disease,
+        {
+          through: "DoctorDiseases"
+        }
+      )
+    }
+
+    showFullName() {
+      return `${this.firstName} ${this.lastName}`
     }
   };
   Doctor.init({

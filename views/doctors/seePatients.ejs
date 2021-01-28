@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../partials/head", { title: "See Patients" }) %>
+</head>
+
+<body>
+  <div class="container">
+    <%- include("../partials/navbar", { page: "doctors" }) %>
+
+    <div class="container-fluid" style="margin-top: 15pt;">
+      <div class="container-fluid">
+        <p class="h2">Patient List</p>
+      </div>
+      <div class="float-end">
+        <a class="btn btn-primary" href="/doctors/<%= data.id %>/sendmail " role="button">Send Mail</a>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Disease</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.Patients.forEach(el => { %>
+           <tr>
+             <th scope="row"><%= el.id %></td>
+             <td><%= el.showFullName() %></td>
+             <td><%= el.age %></td>
+             <td><%= el.Disease.name %></td>
+           </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
