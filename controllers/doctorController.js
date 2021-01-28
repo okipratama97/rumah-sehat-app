@@ -24,7 +24,9 @@ class DoctorController {
         }
       })
       .then(data => {
-        res.render("doctors/seePatients", { data: data })
+        let emailRespond = req.session.mail || null
+        req.session.mail = null
+        res.render("doctors/seePatients", { data: data, alertmsg: emailRespond })
       })
       .catch(err => {
         console.log(err);
@@ -33,7 +35,21 @@ class DoctorController {
   }
 
   static sendMail(req, res) {
-    res.send("Send Mail")
+    let id = req.params.doctorId
+
+    Doctor
+      .findByPk(id, { include: [Patient] })
+      .then(data => {
+        return Doctor.sendMail(data)
+      })
+      .then(respond => {
+        req.session.mail = respond
+        res.redirect(`/doctors/${id}/seepatients`)
+      })
+      .catch(err => {
+        console.log(err);
+        res.send(err)
+      })
   }
 }
 
